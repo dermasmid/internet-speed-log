@@ -1,7 +1,6 @@
 #! /usr/bin/python3
 import subprocess
 import time
-from datetime import datetime
 
 
 
@@ -14,7 +13,7 @@ def main():
         ping = ping.split(' ms')[0].strip()
         download = lines[6].split('Download: ')[1]
         upload = lines[8].split('Upload: ')[1]
-        print(f'{datetime.now()} - hosted_by: {hosted_by} ping: {ping} download: {download} up: {upload}')
+        print(f'hosted_by: {hosted_by} ping: {ping} down: {download} up: {upload}')
         time.sleep(4 * 60)
 
 
