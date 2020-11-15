@@ -1,5 +1,9 @@
 #! /bin/sh
 
+if ! command -v pip3 > /dev/null
+then
+    sudo apt -y install python3-pip
+fi
 
 pip3 install -r requirements.txt
 sudo cp etc/systemd/speed_log.service /etc/systemd/system/
