@@ -1,5 +1,5 @@
 [Unit]
-Description=Intenet logging
+Description=Internet speed logging
 
 [Install]
 WantedBy=multi-user.target
