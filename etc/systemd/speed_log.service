@@ -7,8 +7,7 @@ WantedBy=multi-user.target
 [Service]
 Type=simple
 Environment=PYTHONUNBUFFERED=1
-WorkingDirectory=/home/pi/speed/
-ExecStart=/usr/bin/python3 speed_log.py
+ExecStart=/usr/bin/speed_log.py
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=<speed_log>
