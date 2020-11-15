@@ -7,7 +7,7 @@ import time
 
 def main():
     while True:
-        data = subprocess.run(["speedtest"], capture_output= True).stdout.decode()
+        data = subprocess.run(['python3', '-m', 'speedtest'], capture_output= True).stdout.decode()
         lines = data.split('\n')
         hosted_by, ping = lines[4].split('Hosted by ')[1].split(':')
         ping = ping.split(' ms')[0].strip()
