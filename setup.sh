@@ -12,6 +12,7 @@ sudo cp speed_log.py /usr/bin/
 sudo chmod +x /usr/bin/speed_log.py
 sudo systemctl daemon-reload
 sudo systemctl restart rsyslog.service
+sudo systemctl restart systemd-journald
 sudo systemctl start speed_log.service
 
 
