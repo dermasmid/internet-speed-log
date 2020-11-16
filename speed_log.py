@@ -1,19 +1,22 @@
-#! /usr/bin/python3
+#!/usr/bin/python3
 import subprocess
 import time
-
+import json
 
 
 
 def main():
     while True:
-        data = subprocess.run(['python3', '-m', 'speedtest'], capture_output= True).stdout.decode()
-        lines = data.split('\n')
-        hosted_by, ping = lines[4].split('Hosted by ')[1].split(':')
-        ping = ping.split(' ms')[0].strip()
-        download = lines[6].split('Download: ')[1]
-        upload = lines[8].split('Upload: ')[1]
-        print(f'hosted_by: {hosted_by} ping: {ping} down: {download} up: {upload}')
+        data = subprocess.run(['python3', '-m', 'speedtest', '--json'], capture_output= True).stdout.decode()
+        if data:
+            json_data = json.loads(data)
+            hosted_by = json_data['server']['sponsor']
+            ping = json_data['ping']
+            download = str(json_data['download'] / 8e+6)[:6]
+            upload = str(json_data['upload'] / 8e+6)[:6]
+        else:
+            hosted_by, ping, download, upload = None, 0, 0, 0
+        print(f'hosted_by: {hosted_by}, ping: {ping}, down: {download} Mb/s, up: {upload} Mb/s')
         time.sleep(4 * 60)
 
 
