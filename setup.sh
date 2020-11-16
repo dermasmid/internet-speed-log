@@ -84,8 +84,6 @@ WantedBy=multi-user.target
 Type=simple
 Environment=PYTHONUNBUFFERED=1
 ExecStart=$INSTALL_DIR/speed_log.py
-StandardOutput=syslog
-StandardError=syslog
 SyslogIdentifier=speed_log
 SyslogFacility=local7
 SyslogLevel=info
