@@ -101,7 +101,7 @@ cp speed_log.py $INSTALL_DIR
 chmod +x $INSTALL_DIR/speed_log.py
 
 # reload systemd and syslog
-reloading systemd
+echo "reloading systemd"
 systemctl daemon-reload
 systemctl restart $SYSLOG_CMD.service
 
