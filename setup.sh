@@ -102,12 +102,12 @@ chmod +x $INSTALL_DIR/speed_log.py
 echo "reloading systemd"
 systemctl daemon-reload
 systemctl restart $SYSLOG_CMD.service
-sudo systemctl restart systemd-journald
+systemctl restart systemd-journald
+systemctl start speed_log.service
 
 
 # Enable and start if -e flag was set. 
 if [ "$ENABLED" = 1 ]; then
     echo "Enabling and starting service"
     systemctl enable speed_log.service;
-    systemctl start speed_log.service;
 fi
