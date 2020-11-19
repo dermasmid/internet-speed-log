@@ -17,9 +17,9 @@ if [ -z "$PIP_CMD" ]; then
 fi
 
 # Set additional flags for installation options
-while getopts hd:s:e option; do 
+while getopts "hd:s:e" option; do 
     case "$option" in
-        h) echo "The following option are available:
+        h) echo "The following options are available:
            -d specify taget installation. (default is /usr/local/bin)
            -s specify syslog application
            -e enable and start service after installation
@@ -32,15 +32,15 @@ while getopts hd:s:e option; do
         ;;
         e) ENABLED=1
         ;;
-	*) echo "invalid option"
-           exit 0
+        *) echo "invalid option"
+            exit 0
         ;;
     esac
 done
 
 # If -d was not specified, install in /usr/local/bin
 if [ -z "$INSTALL_DIR" ]; then
-    echo "No install directory specified, dafaulting to /usr/local/bin"
+    echo "No install directory specified, defaulting to /usr/local/bin"
     INSTALL_DIR=/usr/local/bin;
 fi
 
@@ -103,11 +103,11 @@ echo "reloading systemd"
 systemctl daemon-reload
 systemctl restart $SYSLOG_CMD.service
 systemctl restart systemd-journald
-systemctl start speed_log.service
 
 
 # Enable and start if -e flag was set. 
 if [ "$ENABLED" = 1 ]; then
     echo "Enabling and starting service"
-    systemctl enable speed_log.service;
+    systemctl enable speed_log.service
+    systemctl start speed_log.service
 fi

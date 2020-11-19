@@ -16,7 +16,7 @@ def main():
             upload = str(json_data['upload'] / 8e+6)[:6]
         else:
             hosted_by, ping, download, upload = None, 0, 0, 0
-        print(f'hosted_by: {hosted_by}, ping: {ping}, down: {download} Mb/s, up: {upload} Mb/s')
+        print(f'hosted_by: {hosted_by}, ping: {ping}, down: {download} MB/s, up: {upload} MB/s')
         time.sleep(4 * 60)
 
 
