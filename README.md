@@ -5,9 +5,7 @@ I made this to run on my raspberry pi which is hooked up to my local network, in
 ## Installation
 
 ``` bash
-git clone https://github.com/dermasmid/internet-speed-log
-cd internet-speed-log
-sudo chmod +x setup.sh
+git clone https://github.com/dermasmid/internet-speed-log && cd internet-speed-log && sudo chmod +x setup.sh
 ./setup.sh
 ```
 
