@@ -33,6 +33,7 @@ while getopts hd:s:et: option; do
         e) ENABLED=1
         ;;
         t) SLEEP_MINS=${OPTARG}
+        ;;
         *) echo "invalid option"
             exit 0
         ;;
