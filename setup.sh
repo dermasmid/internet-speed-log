@@ -56,6 +56,7 @@ fi
 if [ -z "$SLEEP_MINS"]; then
     echo "sleep time not set defaulting to 10"
     SLEEP_MINS=10
+fi
 
 # If -s flag was not set, automatically check what syslog is being used.
 RSYSLOG_PID=$(pgrep rsyslog)
