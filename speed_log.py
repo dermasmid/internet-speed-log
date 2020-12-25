@@ -2,8 +2,9 @@
 import subprocess
 import time
 import json
+import os
 
-
+SLEEP_MINS = int(os.getenv("SLEEP_MINS"))
 
 def main():
     while True:
@@ -17,7 +18,7 @@ def main():
         else:
             hosted_by, ping, download, upload = None, 0, 0, 0
         print(f'hosted_by: {hosted_by}, ping: {ping}, down: {download} MB/s, up: {upload} MB/s')
-        time.sleep(4 * 60)
+        time.sleep(SLEEP_MINS * 60)
 
 
 

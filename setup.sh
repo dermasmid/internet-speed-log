@@ -17,7 +17,7 @@ if [ -z "$PIP_CMD" ]; then
 fi
 
 # Set additional flags for installation options
-while getopts "hd:s:e" option; do 
+while getopts hd:s:et: option; do 
     case "$option" in
         h) echo "The following options are available:
            -d specify taget installation. (default is /usr/local/bin)
@@ -32,6 +32,7 @@ while getopts "hd:s:e" option; do
         ;;
         e) ENABLED=1
         ;;
+        t) SLEEP_MINS=${OPTARG}
         *) echo "invalid option"
             exit 0
         ;;
@@ -49,6 +50,11 @@ if [ ! -d "$INSTALL_DIR" ]; then
     echo "$INSTALL_DIR does not exist. creating"
     mkdir -p "$INSTALL_DIR"
 fi
+
+# Set sleep time
+if [ -z "$SLEEP_MINS"]; then
+    echo "sleep time not set defaulting to 10"
+    SLEEP_MINS=10
 
 # If -s flag was not set, automatically check what syslog is being used.
 RSYSLOG_PID=$(pgrep rsyslog)
@@ -83,6 +89,7 @@ WantedBy=multi-user.target
 [Service]
 Type=simple
 Environment=PYTHONUNBUFFERED=1
+Environment=SLEEP_MINS=$SLEEP_MINS
 ExecStart=$INSTALL_DIR/speed_log.py
 SyslogIdentifier=speed_log
 SyslogFacility=local7
