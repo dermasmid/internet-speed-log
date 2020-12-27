@@ -11,7 +11,7 @@ git clone https://github.com/dermasmid/internet-speed-log && cd internet-speed-l
 
 ## Usage
 
-The file with the logs will be: `/var/log/speed_log`
+The file with the logs will be: `/var/log/speed_log.log`
 
 Tail the output: `sudo journalctl -u speed_log -f`
 
