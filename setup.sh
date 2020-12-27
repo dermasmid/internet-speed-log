@@ -84,6 +84,8 @@ echo "Generating systemd unit file"
 cat << EOF > /etc/systemd/system/speed_log.service
 [Unit]
 Description=Internet speed logging
+Wants=network-online.target
+After=network-online.target
 
 [Install]
 WantedBy=multi-user.target
